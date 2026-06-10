@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.3/src/parser/GlobalConfigSchema.json",
   "configsList": [
-    "sustainability-survey",
+    "sustainability-stoplight",
     "tutorial",
     "tutorial-replication",
     "demo-html",
@@ -57,8 +57,8 @@
     "test-step-logic"
   ],
   "configs": {
-    "sustainability-survey": {
-      "path": "sustainability-survey/config.json"
+    "sustainability-stoplight": {
+      "path": "sustainability-stoplight/config.json"
     },
     "tutorial": {
       "path": "tutorial/config.json"
