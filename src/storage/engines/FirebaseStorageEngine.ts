@@ -75,7 +75,7 @@ export class FirebaseStorageEngine extends CloudStorageEngine {
     // Check if we're in dev, if so use a debug token
     if (import.meta.env.DEV) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+      (window as any).FIREBASE_APPCHECK_DEBUG_TOKEN = import.meta.env.VITE_APPCHECK_DEBUG_TOKEN || true;
     }
     try {
       initializeAppCheck(firebaseApp, {
