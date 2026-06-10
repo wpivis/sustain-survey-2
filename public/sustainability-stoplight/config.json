@@ -1,0 +1,1093 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.2.0/src/parser/StudyConfigSchema.json",
+  "studyMetadata": {
+    "title": "Sustainability Stoplight",
+    "version": "pilot",
+    "authors": ["Sustainability Stoplight IQP Team"],
+    "date": "2025-09-09",
+    "description": "A sustainability stoplight questionnaire study",
+    "organizations": ["University of Utah", "WPI", "University of Toronto"]
+  },
+  "uiConfig": {
+    "contactEmail": "contact@revisit.dev",
+    "helpTextPath": "assets/help.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "withProgressBar": true,
+    "autoDownloadStudy": false,
+    "urlParticipantIdParam": "PROLIFIC_PID",
+    "studyEndMsg": "**Thank you for completing the study. You may click this link and return to Prolific**: [https://app.prolific.com/submissions/complete?cc=CKXCP9KA](https://app.prolific.com/submissions/complete?cc=CKXCP9KA)",
+
+    "withSidebar": true,
+    "recordAudio": true
+  },
+  "importedLibraries": ["mic-check"],
+  "components": {
+    "introduction": {
+      "type": "markdown",
+      "path": "sustainability-stoplight/assets/introduction.md",
+      "recordAudio": false,
+      "response": [
+        {
+          "id": "prolificId",
+          "prompt": "Please enter your Prolific ID",
+          "location": "belowStimulus",
+          "type": "shortText",
+          "placeholder": "Prolific ID",
+          "paramCapture": "PROLIFIC_PID"
+        }
+      ]
+    },
+    "stoplight": {
+      "meta": {
+        "difficulty": 1,
+        "nr-dots": 20,
+        "temp": "low"
+      },
+      "description": "Low temperature variant",
+      "instruction": "How many times a day do you shower?",
+      "type": "image",
+      "path": "sustainability-stoplight/assets/stoplight_image.png",
+      "style": {
+        "width": "800px"
+      },
+      "nextButtonLocation": "belowStimulus",
+      "response": [
+        {
+          "id": "stoplight-image/assets-response",
+          "prompt": "Answer:",
+          "location": "belowStimulus",
+          "type": "dropdown",
+          "options": [
+            "Red - I shower more than 2 times a day",
+            "Yellow - I shower twice a day.",
+            "Green - I shower once (or less) per day.",
+            "I shower less than one time a day"
+          ]
+        }
+      ]
+    },
+    "numberOfShowers": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "numberOfShowers",
+        "questionText": "How many times a day do you shower?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I shower more than 2 times a day",
+            "label": "I shower more than 2 times a day",
+            "icon": "🚿"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - I shower twice a day",
+            "label": "I shower twice a day",
+            "icon": "🚿🚿"
+          },
+          {
+            "color": "green",
+            "value": "Green - I shower once a day",
+            "label": "I shower once a day",
+            "icon": "🚿"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "numberOfShowers",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "durationOfShowers": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "durationOfShowers",
+        "questionText": "Estimate the average length of your showers.",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I take showers that last longer than 20 minutes",
+            "label": "I take showers that last longer than 20 minutes",
+            "icon": "⏱️"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - I take 10-20 minute showers",
+            "label": "I take 10-20 minute showers",
+            "icon": "⏱️💧"
+          },
+          {
+            "color": "green",
+            "value": "Green - I take less than 10 minute showers",
+            "label": "I take less than 10 minute showers",
+            "icon": "⏱️💚"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "durationOfShowers",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "personalSafety": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "personalSafety",
+        "questionText": "Do you feel safe where you live?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - We feel unsafe most of the time. Violence, threats, or robberies happen often, and we avoid going out.",
+            "label": "We feel unsafe most of the time. Violence, threats, or robberies happen often, and we avoid going out.",
+            "path": "https://raw.githubusercontent.com/kimsta007/hacking/refs/heads/multivariate/outdoors.png"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - We sometimes feel unsafe, especially at night or in certain places nearby. There are occasional thefts or fights.",
+            "label": "We sometimes feel unsafe, especially at night or in certain places nearby. There are occasional thefts or fights.",
+            "path": "https://raw.githubusercontent.com/kimsta007/hacking/refs/heads/multivariate/indoors.png"
+          },
+          {
+            "color": "green",
+            "value": "Green - We feel safe in our neighborhood, both day and night. We can walk freely without fear of being attacked or robbed.",
+            "label": "We feel safe in our neighborhood, both day and night. We can walk freely without fear of being attacked or robbed.",
+            "path": "https://raw.githubusercontent.com/kimsta007/hacking/refs/heads/multivariate/happy.png"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "personalSafety",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "familyCoexistence": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "familyCoexistence",
+        "questionText": "Does your family get along well?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - There is some type of violence in my family, but no member recognizes it or takes action to prevent it or report it.",
+            "label": "There is some type of violence in my family, but no member recognizes it or takes action to prevent it or report it.",
+            "path": "https://raw.githubusercontent.com/kimsta007/hacking/refs/heads/multivariate/gbvfamily.png"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - If there were any type of violence in my family, a member would identify it, but would NOT take action to prevent it or report it.",
+            "label": "If there were any type of violence in my family, a member would identify it, but would NOT take action to prevent it or report it.",
+            "path": "https://raw.githubusercontent.com/kimsta007/hacking/refs/heads/multivariate/arguingfamily.png"
+          },
+          {
+            "color": "green",
+            "value": "Green - My family lives respectfully and free of violence, and if it ever occurred, we would recognize it and take action.",
+            "label": "My family lives respectfully and free of violence, and if it ever occurred, we would recognize it and take action.",
+            "path": "https://raw.githubusercontent.com/kimsta007/hacking/refs/heads/multivariate/happyfamily.png"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "familyCoexistence",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "safeHousing": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "safeHousing",
+        "questionText": "Does you live in a safe home?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - Our house is in bad condition because of, e.g.: flooding risk, doors and windows don’t lock properly.",
+            "label": "Our house is in bad condition because of, e.g.: flooding risk, doors and windows don’t lock properly.",
+            "path": "https://raw.githubusercontent.com/kimsta007/hacking/refs/heads/multivariate/badhome.png"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - Our house has a few safety issues that may be bad for those living there, e.g.: risk of flooding.",
+            "label": "Our house has a few safety issues that may be bad for those living there, e.g.: risk of flooding.",
+            "path": "https://raw.githubusercontent.com/kimsta007/hacking/refs/heads/multivariate/needrepairshome.png"
+          },
+          {
+            "color": "green",
+            "value": "Green - Our house is very safe. There is no structural damage and the building can withstand all weather conditions.",
+            "label": "Our house is very safe. There is no structural damage and the building can withstand all weather conditions.",
+            "path": "https://raw.githubusercontent.com/kimsta007/hacking/refs/heads/multivariate/goodhome.png"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "safeHousing",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "dishwasherUsage": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "dishwasherUsage",
+        "questionText": "If you have a dishwasher, how frequently do you use it?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I just use dishwasher no matter it's full or not",
+            "label": "I just use dishwasher no matter it's full or not",
+            "icon": "🍽️"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - Sometimes I use dishwasher when it's not full",
+            "label": "Sometimes I use dishwasher when it's not full",
+            "icon": "🍽️💧"
+          },
+          {
+            "color": "green",
+            "value": "Green - I manually wash dishes if there's few items and use dishwasher when it's full",
+            "label": "I manually wash dishes if there's few items and use dishwasher when it's full",
+            "icon": "🍽️✅"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "dishwasherUsage",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "disposalOfPaperProducts": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "disposalOfPaperProducts",
+        "questionText": "How do you get rid of the majority of paper products you no longer need/use?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I throw waste away anywhere",
+            "label": "I throw waste away anywhere",
+            "icon": "🗑️"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - I recycle my waste when convenient",
+            "label": "I recycle my waste when convenient",
+            "icon": "♻️"
+          },
+          {
+            "color": "green",
+            "value": "Green - I clean and sort all my waste into appropriate bins",
+            "label": "I clean and sort all my waste into appropriate bins",
+            "icon": "♻️🗑️"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "disposalOfPaperProducts",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "useOfDisposableUtensils": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "useOfDisposableUtensils",
+        "questionText": "What type of materials (utensils, disposables) do you use most often when preparing food and eating?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I always use disposable material that produce trash",
+            "label": "I always use disposable material that produce trash (like paper towel, plastic dishes and utensils, plastic shopping bags)",
+            "icon": "🥤"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - I sometimes use disposable material",
+            "label": "I sometimes use disposable material (like paper towel, dishes, utensils, plastic shopping bags)",
+            "icon": "🍴"
+          },
+          {
+            "color": "green",
+            "value": "Green - I always use reusable material when preparing food and eating",
+            "label": "I basically always use reusable material when preparing food and eating",
+            "icon": "🍽️♻️"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "useOfDisposableUtensils",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "disposableBottlePurchaseFrequency": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "disposableBottlePurchaseFrequency",
+        "questionText": "How often do you purchase bottled drinks in plastic bottles?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I often use bottled water in plastic bottle (1 or more a day)",
+            "label": "I often use bottled water in plastic bottle (1 or more a day)",
+            "icon": "🧴"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - I sometimes use my own water bottle and sometimes plastic bottled water (3-4 times a week)",
+            "label": "I sometimes use my own water bottle and sometimes plastic bottled water (3-4 times a week)",
+            "icon": "🧴💧"
+          },
+          {
+            "color": "green",
+            "value": "Green - I always use my own water bottle",
+            "label": "I always use my own water bottle",
+            "icon": "🚰"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "disposableBottlePurchaseFrequency",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "lightsLeftOnFrequency": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "lightsLeftOnFrequency",
+        "questionText": "How often do you leave lights on while not in use or not in the room?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I always leave lights on when not in use and/or while not in room",
+            "label": "I always leave lights on when not in use and/or while not in room",
+            "icon": "💡"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - I sometimes leave lights on when not in use and/or while not in room",
+            "label": "I sometimes leave lights on when not in use and/or while not in room",
+            "icon": "💡⚡"
+          },
+          {
+            "color": "green",
+            "value": "Green - I never leave lights on when not in use and/or while not in room",
+            "label": "I never leave lights on when not in use and/or while not in room",
+            "icon": "🔦"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "lightsLeftOnFrequency",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "overnightElectronicsUsageFrequency": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+
+      "parameters": {
+        "questionId": "overnightElectronicsUsageFrequency",
+        "questionText": "How often do you leave lights or electronics on overnight?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I always leave the light and electronics on overnight",
+            "label": "I always leave the light and electronics on overnight",
+            "icon": "🌙💡"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - Sometimes I leave the light and electronics on overnight",
+            "label": "Sometimes I leave the light and electronics on overnight",
+            "icon": "🌙⚡"
+          },
+          {
+            "color": "green",
+            "value": "Green - I never leave the light and electronics on overnight",
+            "label": "I never leave the light and electronics on overnight",
+            "icon": "🌙✅"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "overnightElectronicsUsageFrequency",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "overnightChargerUsageFrequency": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "overnightChargerUsageFrequency",
+        "questionText": "Do you leave chargers connected when not in use or overnight?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I always leave chargers connected when they are not in use",
+            "label": "I always leave chargers connected when they are not in use",
+            "icon": "🔌"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - I sometimes leave chargers connected when they are not in use",
+            "label": "I sometimes leave chargers connected when they are not in use",
+            "icon": "🔌⚡"
+          },
+          {
+            "color": "green",
+            "value": "Green - I never leave chargers connected when they are not in use",
+            "label": "I never leave chargers connected when they are not in use",
+            "icon": "🔋"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "overnightChargerUsageFrequency",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "airConditionerEfficiency": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "airConditionerEfficiency",
+        "questionText": "If you own an AC unit, how old is it?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - My AC is old and not efficient",
+            "label": "My AC is old and not efficient",
+            "icon": "🌡️"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - My AC is either old or not efficient",
+            "label": "My AC is either old or not efficient",
+            "icon": "🌡️⚠️"
+          },
+          {
+            "color": "green",
+            "value": "Green - My AC is not old and it's efficient",
+            "label": "My AC is not old and it's efficient",
+            "icon": "❄️"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "airConditionerEfficiency",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "airConditionerUsageFrequency": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "airConditionerUsageFrequency",
+        "questionText": "If you own an AC unit, how often do you use it in the summer?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I keep the temperature as low as possible using AC",
+            "label": "I keep the temperature as low as possible using AC",
+            "icon": "❄️❄️"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - I keep temperature lower than normal using AC",
+            "label": "I keep temperature lower than normal using AC",
+            "icon": "❄️"
+          },
+          {
+            "color": "green",
+            "value": "Green - I keep temperature in normal range using AC and other energy efficient methods",
+            "label": "I keep temperature in normal range using AC and other energy efficient methods",
+            "icon": "🌡️✅"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "airConditionerUsageFrequency",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "useOfPaperTowels": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "useOfPaperTowels",
+        "questionText": "Do you use paper towels for cleaning?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - I only use paper towels",
+            "label": "I only use paper towels",
+            "icon": "🧻"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - I use both paper towels and rags/reusable wipes",
+            "label": "I use both paper towels and rags/reusable wipes",
+            "icon": "🧻🧽"
+          },
+          {
+            "color": "green",
+            "value": "Green - I only use rags/reusable wipes",
+            "label": "I only use rags/reusable wipes",
+            "icon": "🧽"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "useOfPaperTowels",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "useOfReusableShoppingBags": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "useOfReusableShoppingBags",
+        "questionText": "Do you use any reusable bags for shopping?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - No",
+            "label": "No",
+            "icon": "🛍️"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - Sometimes/When I remember",
+            "label": "Sometimes/When I remember",
+            "icon": "🛍️♻️"
+          },
+          {
+            "color": "green",
+            "value": "Green - Yes",
+            "label": "Yes",
+            "icon": "♻️🛍️"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "useOfReusableShoppingBags",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "recyclingLiteracy": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "recyclingLiteracy",
+        "questionText": "How well do you think you know what is recyclable and what is not?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - Never/Not at all",
+            "label": "Never/Not at all",
+            "icon": "❓"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - Somewhat",
+            "label": "Somewhat",
+            "icon": "♻️"
+          },
+          {
+            "color": "green",
+            "value": "Green - Always/Very well",
+            "label": "Always/Very well",
+            "icon": "♻️✅"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "recyclingLiteracy",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "politicalAwarenessOfSustainability": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "politicalAwarenessOfSustainability",
+        "questionText": "Do you keep up with politics related to sustainability?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - No",
+            "label": "No",
+            "icon": "📰"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - Casually/Sometimes",
+            "label": "Casually/Sometimes",
+            "icon": "📰🌍"
+          },
+          {
+            "color": "green",
+            "value": "Green - Yes",
+            "label": "Yes",
+            "icon": "🌍📰"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "politicalAwarenessOfSustainability",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "importanceOfSustainability": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "importanceOfSustainability",
+        "questionText": "How important would you say sustainability is for you personally?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - Not important",
+            "label": "Not important",
+            "icon": "🌍"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - Somewhat important",
+            "label": "Somewhat important",
+            "icon": "🌍💚"
+          },
+          {
+            "color": "green",
+            "value": "Green - Very important",
+            "label": "Very important",
+            "icon": "💚🌍"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "importanceOfSustainability",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "sustainabilityAffiliations": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "sustainabilityAffiliations",
+        "questionText": "Are you affiliated with any sustainability organizations, groups, or clubs?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - No",
+            "label": "No",
+            "icon": "🏢"
+          },
+          {
+            "color": "green",
+            "value": "Green - Yes",
+            "label": "Yes",
+            "icon": "🌱🏢"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "sustainabilityAffiliations",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "sustainabilityInterest": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "sustainabilityInterest",
+        "questionText": "Are you interested in learning about your own level of sustainability?",
+        "options": [
+          {
+            "color": "red",
+            "value": "Red - No",
+            "label": "No",
+            "icon": "📊"
+          },
+          {
+            "color": "yellow",
+            "value": "Yellow - Maybe",
+            "label": "Maybe",
+            "icon": "📊🤔"
+          },
+          {
+            "color": "green",
+            "value": "Green - Yes",
+            "label": "Yes",
+            "icon": "📊✅"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "sustainabilityInterest",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "deviceType": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightQuestion.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "deviceType",
+        "questionText": "Do you use an Android or Apple mobile device?",
+        "options": [
+          {
+            "color": "green",
+            "value": "Apple",
+            "label": "Apple",
+            "icon": "🍎"
+          },
+          {
+            "color": "green",
+            "value": "Android",
+            "label": "Android",
+            "icon": "🤖"
+          },
+          {
+            "color": "green",
+            "value": "Other",
+            "label": "Other",
+            "icon": "📱"
+          }
+        ]
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "deviceType",
+          "prompt": "Your answer",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "generalComments": {
+      "type": "react-component",
+      "path": "sustainability-stoplight/assets/StoplightTextInput.tsx",
+      "instruction": "Please verbalize your thoughts, reactions, and decision-making process as you consider the question.",
+      "parameters": {
+        "questionId": "generalComments",
+        "questionText": "Do you have any general comments, questions, or concerns based on this survey?",
+        "placeholder": "Please enter your comments, or write N/A if you have none"
+      },
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "generalComments",
+          "prompt": "Your comments",
+          "required": true,
+          "location": "sidebar",
+          "type": "reactive"
+        }
+      ]
+    },
+    "demographics": {
+      "type": "questionnaire",
+      "description": "Basic demographic questions including gender, age, and education",
+      "response": [
+        {
+          "id": "gender",
+          "prompt": "What is your **gender**?",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Woman",
+            "Man",
+            "Non-binary / Genderqueer / Third gender",
+            "Genderfluid / Gender non-conforming",
+            "Questioning",
+            "Prefer not to say"
+          ]
+        },
+        {
+          "id": "age",
+          "prompt": "What is your **age**?",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": [
+            "Under 18 years",
+            "18-24 years",
+            "25-34 years",
+            "35-44 years",
+            "45-54 years",
+            "55-64 years",
+            "65 years or older",
+            "Prefer not to say"
+          ]
+        },
+        {
+          "id": "education",
+          "prompt": "What is the **highest degree or level of education** you have completed?",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Less than high school",
+            "High school diploma or equivalent",
+            "Bachelor's degree or equivalent",
+            "Master's degree or equivalent",
+            "Doctoral degree or equivalent",
+            "Prefer not to say"
+          ]
+        },
+        {
+          "id": "race",
+          "prompt": "What is your **race**?",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Asian",
+            "Black",
+            "Hispanic or Latino",
+            "Native American or Alaska Native",
+            "Native Hawaiian or Other Pacific Islander",
+            "White",
+            "Prefer not to say"
+          ]
+        },
+        {
+          "id": "employment",
+          "prompt": "What is your **employment** status?",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Full-time",
+            "Part-time",
+            "Unemployed",
+            "Student",
+            "Retired",
+            "Prefer not to say"
+          ]
+        },
+        {
+          "id": "housing",
+          "prompt": "What is your **housing** situation?",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Rent",
+            "Own",
+            "Temporary housing",
+            "Living with family or friends",
+            "Prefer not to say"
+          ]
+        },
+        {
+          "id": "income",
+          "prompt": "What is your yearly income?",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "< $40,000",
+            "$40,000 - $80,000",
+            "$80,000 - $120,000",
+            "> $120,000",
+            "Prefer not to say"
+          ]
+        }
+      ]
+    }
+  },
+
+  "sequence": {
+    "order": "fixed",
+    "components": [
+      "introduction",
+      "$mic-check.co.audioTest",
+      "numberOfShowers",
+      "durationOfShowers",
+      "dishwasherUsage",
+      "disposalOfPaperProducts",
+      "useOfDisposableUtensils",
+      "disposableBottlePurchaseFrequency",
+      "lightsLeftOnFrequency",
+      "overnightElectronicsUsageFrequency",
+      "overnightChargerUsageFrequency",
+      "airConditionerEfficiency",
+      "airConditionerUsageFrequency",
+      "useOfPaperTowels",
+      "useOfReusableShoppingBags",
+      "recyclingLiteracy",
+      "politicalAwarenessOfSustainability",
+      "importanceOfSustainability",
+      "sustainabilityAffiliations",
+      "sustainabilityInterest",
+      "personalSafety",
+      "familyCoexistence",
+      "safeHousing",
+      "deviceType",
+      "generalComments",
+      "demographics"
+    ]
+  }
+}
