@@ -46,6 +46,7 @@ import {
   cleanupModes,
 } from './types';
 import { EditedText, TaglessEditedText } from '../../analysis/individualStudy/thinkAloud/types';
+import { StoredAudioAnalysis } from '../../analysis/individualStudy/audioAnalysis/utils';
 
 export class FirebaseStorageEngine extends CloudStorageEngine {
   private RECAPTCHAV3TOKEN = import.meta.env.VITE_RECAPTCHAV3TOKEN;
@@ -875,5 +876,57 @@ export class FirebaseStorageEngine extends CloudStorageEngine {
     const taglessTranscript = editedText.map((line) => ({ ...line, selectedTags: line.selectedTags.filter((tag) => tag !== undefined) })) as TaglessEditedText[];
 
     return this._pushToStorage(`audio/transcriptAndTags/${authEmail}/${participantId}/${task}`, 'editedText', taglessTranscript);
+  }
+
+  async getAudioAnalysis(participantId: string, authEmail: string, task: string) {
+    const analysis = await this._getFromStorage(`audio/sentimentAnalysis/${authEmail}/${participantId}/${task}`, 'sentimentAnalysis');
+
+    if (Array.isArray(analysis.aspects)) {
+      return analysis as StoredAudioAnalysis;
+    }
+
+    return null;
+  }
+
+  async saveAudioAnalysis(participantId: string, authEmail: string, task: string, analysis: StoredAudioAnalysis) {
+    return this._pushToStorage(`audio/sentimentAnalysis/${authEmail}/${participantId}/${task}`, 'sentimentAnalysis', analysis);
+  }
+
+  async getAllAudioAnalyses(authEmail: string): Promise<Record<string, Record<string, StoredAudioAnalysis>>> {
+    const result: Record<string, Record<string, StoredAudioAnalysis>> = {};
+
+    try {
+      const analyst = ref(this.storage, `${this.collectionPrefix}${this.studyId}/audio/sentimentAnalysis/${authEmail}`);
+      const participants = await listAll(analyst);
+
+      await Promise.all(participants.prefixes.map(async (participant) => {
+        const { items } = await listAll(participant);
+
+        const participantAnalyses: Record<string, StoredAudioAnalysis> = {};
+        const entries = await Promise.all(items.map(async (itemRef) => {
+          try {
+            const blob = await getBlob(itemRef);
+            const analysis = JSON.parse(await blob.text()) as StoredAudioAnalysis;
+            if (!Array.isArray(analysis.aspects)) return null;
+            const task = itemRef.name.replace(/_sentimentAnalysis$/, '');
+            return { task, analysis };
+          } catch {
+            return null;
+          }
+        }));
+
+        entries.forEach((entry) => {
+          if (entry) participantAnalyses[entry.task] = entry.analysis;
+        });
+
+        if (Object.keys(participantAnalyses).length > 0) {
+          result[participant.name] = participantAnalyses;
+        }
+      }));
+    } catch (error) {
+      console.error('Error getting audio analysis data:', error);
+    }
+
+    return result;
   }
 }

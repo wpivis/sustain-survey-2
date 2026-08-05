@@ -18,7 +18,8 @@
     "studyEndMsg": "**Thank you once more for completing the study. You may click this link and return to Prolific**: [https://app.prolific.com/submissions/complete?cc=CKXCP9KA](https://app.prolific.com/submissions/complete?cc=CKXCP9KA)",
 
     "withSidebar": true,
-    "recordAudio": true
+    "recordAudio": true,
+    "recordKeywords": ["sustainability", "environment", "cost", "convenience", "habit"]
   },
   "importedLibraries": ["mic-check"],
   "components": {
@@ -101,7 +102,8 @@
           "prompt": "Your answer",
           "required": true,
           "location": "sidebar",
-          "type": "reactive"
+          "type": "reactive",
+          "recordKeywords": ["shower", "water", "daily", "hygiene"]
         }
       ]
     },
@@ -140,7 +142,8 @@
           "prompt": "Your answer",
           "required": true,
           "location": "sidebar",
-          "type": "reactive"
+          "type": "reactive",
+          "recordKeywords": ["shower", "water", "time", "minutes", "length"]
         }
       ]
     },
@@ -335,7 +338,8 @@
           "prompt": "Your answer",
           "required": true,
           "location": "sidebar",
-          "type": "reactive"
+          "type": "reactive",
+          "recordKeywords": ["recycle", "paper", "waste", "trash", "sort"]
         }
       ]
     },
@@ -413,7 +417,8 @@
           "prompt": "Your answer",
           "required": true,
           "location": "sidebar",
-          "type": "reactive"
+          "type": "reactive",
+          "recordKeywords": ["bottle", "plastic", "water", "reusable", "purchase"]
         }
       ]
     },
@@ -570,7 +575,8 @@
           "prompt": "Your answer",
           "required": true,
           "location": "sidebar",
-          "type": "reactive"
+          "type": "reactive",
+          "recordKeywords": ["air conditioner", "ac", "energy", "efficient", "old"]
         }
       ]
     },
@@ -609,7 +615,8 @@
           "prompt": "Your answer",
           "required": true,
           "location": "sidebar",
-          "type": "reactive"
+          "type": "reactive",
+          "recordKeywords": ["air conditioner", "ac", "temperature", "summer", "energy"]
         }
       ]
     },
@@ -726,7 +733,8 @@
           "prompt": "Your answer",
           "required": true,
           "location": "sidebar",
-          "type": "reactive"
+          "type": "reactive",
+          "recordKeywords": ["recycling", "recyclable", "waste", "sort", "bin"]
         }
       ]
     },

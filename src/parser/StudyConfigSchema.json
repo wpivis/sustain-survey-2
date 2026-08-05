@@ -80,10 +80,6 @@
             "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
             "type": "object"
           },
-          "nextButtonDisableTime": {
-            "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-            "type": "number"
-          },
           "nextButtonAutoAdvanceTime": {
             "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
             "type": "number"
@@ -94,6 +90,10 @@
           },
           "nextButtonAutoAdvanceWarningTime": {
             "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+            "type": "number"
+          },
+          "nextButtonDisableTime": {
+            "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
             "type": "number"
           },
           "nextButtonEnableTime": {
@@ -335,6 +335,13 @@
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -451,6 +458,13 @@
         "prompt": {
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
+        },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
@@ -647,6 +661,13 @@
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -797,6 +818,9 @@
         "prompt": {
           "not": {}
         },
+        "recordKeywords": {
+          "not": {}
+        },
         "required": {
           "not": {}
         },
@@ -906,6 +930,13 @@
         "prompt": {
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
+        },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
@@ -1029,10 +1060,6 @@
           "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
           "type": "object"
         },
-        "nextButtonDisableTime": {
-          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-          "type": "number"
-        },
         "nextButtonAutoAdvanceTime": {
           "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
           "type": "number"
@@ -1043,6 +1070,10 @@
         },
         "nextButtonAutoAdvanceWarningTime": {
           "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+          "type": "number"
+        },
+        "nextButtonDisableTime": {
+          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
           "type": "number"
         },
         "nextButtonEnableTime": {
@@ -1304,10 +1335,6 @@
           "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
           "type": "object"
         },
-        "nextButtonDisableTime": {
-          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-          "type": "number"
-        },
         "nextButtonAutoAdvanceTime": {
           "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
           "type": "number"
@@ -1318,6 +1345,10 @@
         },
         "nextButtonAutoAdvanceWarningTime": {
           "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+          "type": "number"
+        },
+        "nextButtonDisableTime": {
+          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
           "type": "number"
         },
         "nextButtonEnableTime": {
@@ -1602,6 +1633,13 @@
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -1698,6 +1736,13 @@
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -1785,10 +1830,6 @@
           "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
           "type": "object"
         },
-        "nextButtonDisableTime": {
-          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-          "type": "number"
-        },
         "nextButtonAutoAdvanceTime": {
           "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
           "type": "number"
@@ -1799,6 +1840,10 @@
         },
         "nextButtonAutoAdvanceWarningTime": {
           "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+          "type": "number"
+        },
+        "nextButtonDisableTime": {
+          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
           "type": "number"
         },
         "nextButtonEnableTime": {
@@ -2006,6 +2051,13 @@
           ],
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -2146,6 +2198,13 @@
           ],
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -2268,6 +2327,13 @@
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -2355,10 +2421,6 @@
           "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
           "type": "object"
         },
-        "nextButtonDisableTime": {
-          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-          "type": "number"
-        },
         "nextButtonAutoAdvanceTime": {
           "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
           "type": "number"
@@ -2369,6 +2431,10 @@
         },
         "nextButtonAutoAdvanceWarningTime": {
           "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+          "type": "number"
+        },
+        "nextButtonDisableTime": {
+          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
           "type": "number"
         },
         "nextButtonEnableTime": {
@@ -2548,6 +2614,13 @@
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -2685,6 +2758,13 @@
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -2777,10 +2857,6 @@
           "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
           "type": "object"
         },
-        "nextButtonDisableTime": {
-          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-          "type": "number"
-        },
         "nextButtonAutoAdvanceTime": {
           "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
           "type": "number"
@@ -2791,6 +2867,10 @@
         },
         "nextButtonAutoAdvanceWarningTime": {
           "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+          "type": "number"
+        },
+        "nextButtonDisableTime": {
+          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
           "type": "number"
         },
         "nextButtonEnableTime": {
@@ -2936,6 +3016,13 @@
         "prompt": {
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
+        },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
@@ -3108,6 +3195,13 @@
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
         },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
           "type": "boolean"
@@ -3213,6 +3307,13 @@
         "prompt": {
           "description": "The prompt that is displayed to the participant. You can use markdown here to render images, links, etc.",
           "type": "string"
+        },
+        "recordKeywords": {
+          "description": "Additional keywords to listen for when running audio sentiment analysis on this question.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "required": {
           "description": "Controls whether the response is required to be answered. Defaults to true.",
@@ -3628,6 +3729,9 @@
           "description": "The markdown text that is displayed to the user.",
           "type": "string"
         },
+        "recordKeywords": {
+          "not": {}
+        },
         "required": {
           "not": {}
         },
@@ -3750,6 +3854,13 @@
         "recordAudio": {
           "description": "Whether or not we want to utilize think-aloud features. If true, will record audio on all components unless deactivated on individual components. Defaults to false.",
           "type": "boolean"
+        },
+        "recordKeywords": {
+          "description": "Keywords to always listen for when running audio sentiment analysis.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "recordScreen": {
           "description": "Whether or not we want to utilize screen recording feature. If true, will record audio on all components unless deactivated on individual components. This must be set to true if you want to record audio on any component in your study. Defaults to false. It's also required that the library component, $screen-recording.components.screenRecordingPermission, be included in the study at some point before any component that you want to record the screen on to ensure permissions are granted and screen capture has started.",
@@ -3915,10 +4026,6 @@
           "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
           "type": "object"
         },
-        "nextButtonDisableTime": {
-          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-          "type": "number"
-        },
         "nextButtonAutoAdvanceTime": {
           "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
           "type": "number"
@@ -3929,6 +4036,10 @@
         },
         "nextButtonAutoAdvanceWarningTime": {
           "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+          "type": "number"
+        },
+        "nextButtonDisableTime": {
+          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
           "type": "number"
         },
         "nextButtonEnableTime": {
@@ -4082,10 +4193,6 @@
           "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
           "type": "object"
         },
-        "nextButtonDisableTime": {
-          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-          "type": "number"
-        },
         "nextButtonAutoAdvanceTime": {
           "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
           "type": "number"
@@ -4096,6 +4203,10 @@
         },
         "nextButtonAutoAdvanceWarningTime": {
           "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+          "type": "number"
+        },
+        "nextButtonDisableTime": {
+          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
           "type": "number"
         },
         "nextButtonEnableTime": {
@@ -4257,10 +4368,6 @@
           "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
           "type": "object"
         },
-        "nextButtonDisableTime": {
-          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-          "type": "number"
-        },
         "nextButtonAutoAdvanceTime": {
           "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
           "type": "number"
@@ -4271,6 +4378,10 @@
         },
         "nextButtonAutoAdvanceWarningTime": {
           "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+          "type": "number"
+        },
+        "nextButtonDisableTime": {
+          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
           "type": "number"
         },
         "nextButtonEnableTime": {
@@ -4428,10 +4539,6 @@
           "description": "The meta data for the component. This is used to identify and provide additional information for the component in the admin panel.",
           "type": "object"
         },
-        "nextButtonDisableTime": {
-          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
-          "type": "number"
-        },
         "nextButtonAutoAdvanceTime": {
           "description": "The time in milliseconds after which the participant is automatically advanced to the next component without saving answers from the current component.",
           "type": "number"
@@ -4442,6 +4549,10 @@
         },
         "nextButtonAutoAdvanceWarningTime": {
           "description": "The time in milliseconds before auto-advance when the warning message is shown. Defaults to 30000.",
+          "type": "number"
+        },
+        "nextButtonDisableTime": {
+          "description": "The time in milliseconds to wait before the next button is disabled. If present, will override the next button disable time setting in the uiConfig.",
           "type": "number"
         },
         "nextButtonEnableTime": {

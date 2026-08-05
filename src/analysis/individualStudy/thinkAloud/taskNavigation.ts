@@ -7,12 +7,14 @@ export function buildTaskNavigationTarget({
   isReplay,
   studyId,
   search,
+  analysisTab = 'tagging',
 }: {
   answerIdentifier: string;
   trialOrder: string;
   isReplay: boolean;
   studyId: string;
   search: string;
+  analysisTab?: string;
 }) {
   const { step, funcIndex } = parseTrialOrder(trialOrder);
   if (step === null) {
@@ -21,7 +23,7 @@ export function buildTaskNavigationTarget({
 
   if (!isReplay) {
     return {
-      pathname: `/analysis/stats/${studyId}/tagging/${encodeURIComponent(answerIdentifier)}`,
+      pathname: `/analysis/stats/${studyId}/${analysisTab}/${encodeURIComponent(answerIdentifier)}`,
       search,
     };
   }

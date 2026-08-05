@@ -11,6 +11,7 @@ import { parseConditionParam } from '../../utils/handleConditionLogic';
 import {
   ParticipantTags, Tag, TaglessEditedText, TranscribedAudio,
 } from '../../analysis/individualStudy/thinkAloud/types';
+import { StoredAudioAnalysis } from '../../analysis/individualStudy/audioAnalysis/utils';
 import {
   normalizeStoredProvenance,
   splitProvenanceFromAnswers,
@@ -98,6 +99,8 @@ export type StorageObject<T extends StorageObjectType> =
   ? ParticipantTags
   : T extends 'tags'
   ? Tag[]
+  : T extends 'sentimentAnalysis'
+  ? StoredAudioAnalysis
   : Blob; // Fallback for any random string
 
 interface CloudStorageEngineError {
@@ -152,7 +155,7 @@ export abstract class StorageEngine {
 
   protected abstract participantStore: ReturnType<typeof localforage.createInstance>;
 
-  protected collectionPrefix = import.meta.env.DEV ? 'dev-' : 'prod-';
+  protected collectionPrefix = 'prod-';
 
   protected studyId: string | undefined;
 

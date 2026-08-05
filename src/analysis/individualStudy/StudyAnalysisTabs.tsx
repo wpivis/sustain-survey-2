@@ -9,6 +9,7 @@ import {
   IconTags,
   IconDashboard,
   IconFileCode,
+  IconWaveSine,
 } from '@tabler/icons-react';
 import {
   useCallback, useEffect, useMemo, useState,
@@ -32,6 +33,7 @@ import { useStudyRecordings } from '../../utils/useStudyRecordings';
 import { getSequenceConditions, parseConditionParam } from '../../utils/handleConditionLogic';
 import 'mantine-react-table/styles.css';
 import { ThinkAloudAnalysis } from './thinkAloud/ThinkAloudAnalysis';
+import { AudioAnalysis } from './audioAnalysis/AudioAnalysis';
 import { FirebaseStorageEngine } from '../../storage/engines/FirebaseStorageEngine';
 import { ConfigView } from './config/ConfigView';
 
@@ -567,6 +569,16 @@ export function StudyAnalysisTabs({ globalConfig }: { globalConfig: GlobalConfig
                   </span>
                 </Tooltip>
                 <Tooltip
+                  label={!isFirebaseEngine
+                    ? 'Audio analysis is only available when using Firebase and when audio recording is enabled in your study config'
+                    : 'Audio analysis is only available for studies with audio recording enabled in your study config'}
+                  disabled={codingEnabled}
+                >
+                  <span>
+                    <Tabs.Tab value="audio-analysis" leftSection={<IconWaveSine size={16} />} disabled={!codingEnabled}>Audio Analysis</Tabs.Tab>
+                  </span>
+                </Tooltip>
+                <Tooltip
                   label="Live Monitor is only available when using Firebase"
                   disabled={liveMonitorEnabled}
                 >
@@ -605,6 +617,19 @@ export function StudyAnalysisTabs({ globalConfig }: { globalConfig: GlobalConfig
                         {!isFirebaseEngine
                           ? 'Think aloud coding is only available when using Firebase and when audio recording is enabled in your study config'
                           : 'Think aloud coding is only available for studies with audio recording enabled in your study config'}
+                      </Text>
+                    </Center>
+                  )}
+              </Tabs.Panel>
+              <Tabs.Panel style={{ overflow: 'auto' }} value="audio-analysis" pt="xs">
+                {studyConfig && codingEnabled
+                  ? <AudioAnalysis visibleParticipants={visibleParticipants} storageEngine={storageEngine as FirebaseStorageEngine} studyConfig={studyConfig} />
+                  : (
+                    <Center>
+                      <Text c="dimmed">
+                        {!isFirebaseEngine
+                          ? 'Audio analysis is only available when using Firebase and when audio recording is enabled in your study config'
+                          : 'Audio analysis is only available for studies with audio recording enabled in your study config'}
                       </Text>
                     </Center>
                   )}

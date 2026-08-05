@@ -293,6 +293,8 @@ export interface UIConfig {
   recordAudio?: boolean;
   /** Enables a click-and-hold microphone button instead of continuous recording. When true, audio is muted by default and is recorded only while the button is held. When false, recording starts immediately and can be paused/resumed via the microphone button. Defaults to false. */
   clickToRecord?: boolean;
+  /** Keywords to always listen for when running audio sentiment analysis. */
+  recordKeywords?: string[];
   /** Whether or not we want to utilize screen recording feature. If true, will record audio on all components unless deactivated on individual components. This must be set to true if you want to record audio on any component in your study. Defaults to false. It's also required that the library component, $screen-recording.components.screenRecordingPermission, be included in the study at some point before any component that you want to record the screen on to ensure permissions are granted and screen capture has started. */
   recordScreen?: boolean;
   /** Desired fps for recording screen. If possible, this value will be used, but if it's not possible, the user agent will use the closest possible match. */
@@ -388,6 +390,8 @@ export interface BaseResponse {
   style?: Styles;
   /** Exclude response from randomization. If present, will override the `responseOrder` randomization setting in the components. Defaults to false. */
   excludeFromRandomization?: boolean;
+  /** Additional keywords to listen for when running audio sentiment analysis on this question. */
+  recordKeywords?: string[];
 }
 
 /**
@@ -899,7 +903,7 @@ export interface ButtonsResponse extends BaseResponse {
  *
  * In this example, the text only response is displayed below the stimulus and the enumeration of the questions is restarted.
  */
-export interface TextOnlyResponse extends Omit<BaseResponse, 'secondaryText' | 'required' | 'requiredValue' | 'requiredLabel' | 'paramCapture' | 'hidden' | 'withDontKnow'> {
+export interface TextOnlyResponse extends Omit<BaseResponse, 'secondaryText' | 'required' | 'requiredValue' | 'requiredLabel' | 'paramCapture' | 'hidden' | 'withDontKnow' | 'recordKeywords'> {
   type: 'textOnly';
   /** The markdown text that is displayed to the user. */
   prompt: string;
@@ -913,6 +917,7 @@ export interface TextOnlyResponse extends Omit<BaseResponse, 'secondaryText' | '
   paramCapture?: undefined;
   hidden?: undefined;
   withDontKnow?: undefined;
+  recordKeywords?: undefined;
 }
 
 /*
@@ -928,7 +933,7 @@ export interface TextOnlyResponse extends Omit<BaseResponse, 'secondaryText' | '
  *
  * In this example, the divider is displayed below the stimulus.
  */
-export interface DividerResponse extends Omit<BaseResponse, 'prompt' | 'infoText' | 'secondaryText' | 'required' | 'requiredValue' | 'requiredLabel' | 'paramCapture' | 'hidden' | 'withDontKnow'> {
+export interface DividerResponse extends Omit<BaseResponse, 'prompt' | 'infoText' | 'secondaryText' | 'required' | 'requiredValue' | 'requiredLabel' | 'paramCapture' | 'hidden' | 'withDontKnow' | 'recordKeywords'> {
   type: 'divider';
 
   prompt?: undefined;
@@ -940,6 +945,7 @@ export interface DividerResponse extends Omit<BaseResponse, 'prompt' | 'infoText
   paramCapture?: undefined;
   hidden?: undefined;
   withDontKnow?: undefined;
+  recordKeywords?: undefined;
 }
 
 export type Response = NumericalResponse | ShortTextResponse | LongTextResponse | LikertResponse | DropdownResponse | SliderResponse | RadioResponse | CheckboxResponse | RankingResponse | ReactiveResponse | CustomResponse | MatrixResponse | ButtonsResponse | TextOnlyResponse | DividerResponse;

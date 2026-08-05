@@ -95,9 +95,9 @@ async function getTags(storageEngine: StorageEngine | undefined, type: 'particip
 }
 
 export function ThinkAloudFooter({
-  visibleParticipants, rawTranscript, currentShownTranscription, width, onTimeUpdate, isReplay, editedTranscript, currentTrial, saveProvenance, jumpedToLine = 0, studyId, setHasAudio, storageEngine,
+  visibleParticipants, rawTranscript, currentShownTranscription, width, onTimeUpdate, isReplay, editedTranscript, currentTrial, saveProvenance, jumpedToLine = 0, studyId, setHasAudio, storageEngine, analysisTab = 'tagging',
 }: {
-  visibleParticipants: string[], rawTranscript: TranscribedAudio | null, currentShownTranscription: number | null, width: number, onTimeUpdate: (n: number) => void, isReplay: boolean, editedTranscript?: EditedText[], currentTrial: string, saveProvenance: (prov: unknown) => void, jumpedToLine?: number, studyId: string, setHasAudio: (b: boolean) => void, storageEngine: StorageEngine | undefined,
+  visibleParticipants: string[], rawTranscript: TranscribedAudio | null, currentShownTranscription: number | null, width: number, onTimeUpdate: (n: number) => void, isReplay: boolean, editedTranscript?: EditedText[], currentTrial: string, saveProvenance: (prov: unknown) => void, jumpedToLine?: number, studyId: string, setHasAudio: (b: boolean) => void, storageEngine: StorageEngine | undefined, analysisTab?: string,
 }) {
   const auth = useAuth();
 
@@ -290,6 +290,7 @@ export function ThinkAloudFooter({
       isReplay,
       studyId,
       search: location.search,
+      analysisTab,
     });
 
     if (!navigationTarget) {
@@ -304,7 +305,7 @@ export function ThinkAloudFooter({
         value: answer.trialOrder,
       });
     }
-  }, [isReplay, location.search, navigate, participant, studyId]);
+  }, [analysisTab, isReplay, location.search, navigate, participant, studyId]);
 
   const nextTaskCallback = useCallback((indexChange: number) => {
     if (!currentTrial || orderedAnswers.length === 0) {
